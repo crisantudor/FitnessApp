@@ -24,7 +24,7 @@ const User = {
     const [result] = await pool.query('UPDATE Users SET name = ?, email = ?, password = ?, age = ? WHERE id = ?', [name, email, password, age, id]);
     return result;
   },
-  delete: async ({id}) => {
+  delete: async (id) => {
     const [result] = await pool.query('DELETE FROM Users WHERE id = ?', [id]);
     return result;
   }
