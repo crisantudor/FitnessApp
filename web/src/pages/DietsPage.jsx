@@ -3,19 +3,22 @@ import React, { useEffect, useState } from 'react'
 import colors from '../utils/colors'
 import axios from 'axios';
 import DietsList from '../components/diets/DietsList';
+import { useSelector } from 'react-redux';
 
 function DietsPage() {
   const sectionSpacing = "0.5rem"
   const toast = useToast();
 
+  const user = useSelector(state => state.user.data);
+  const userId = user.id;
+
   const [diets, setDiets] = useState([]);
 
-  console.log(diets)
 
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/diets`);
+        const response = await axios.get(`http://localhost:8080/diets/user/${userId}`);
         setDiets(response.data);
       } catch (error) {
         console.error('Error fetching diets:', error);
