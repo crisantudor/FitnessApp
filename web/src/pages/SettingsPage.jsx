@@ -9,19 +9,19 @@ import ActivityIndicatorView from '../components/ActivityIndicatorView';
 
 
 function SettingsPage() {
-    const dispatch = useDispatch();
-    const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
+  const dispatch = useDispatch();
+  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
 
-    const user = useSelector(state => state.user.data);
+  const user = useSelector(state => state.user.data);
 
-    useEffect(() => {
-        if(!user) {
-            window.location.href = '/';
-        }
-    }, [user])
+  useEffect(() => {
+    if (!user) {
+      window.location.href = '/';
+    }
+  }, [user])
 
- const sectionSpacing = "0.5rem"
- const handleLogout = () => {
+  const sectionSpacing = "0.5rem"
+  const handleLogout = () => {
     dispatch(logoutUser());
     window.location.href = '/';
   }
@@ -50,54 +50,57 @@ function SettingsPage() {
   return (
     <Flex h="100vh" w="100vw" >
       {/* Side Menu */}
-      <Box display={"flex"}  textAlign={"left"} alignItems={"center"} fontWeight={"semibold"} flexDirection={"column"} w="250px" bg={colors.sidebarBackground} p="4" boxShadow="md" color={colors.unfocusedText}>
+      <Box display={"flex"} textAlign={"left"} alignItems={"center"} fontWeight={"semibold"} flexDirection={"column"} w="250px" bg={colors.sidebarBackground} p="4" boxShadow="md" color={colors.unfocusedText}>
         <Text w={"100%"} fontSize={24} paddingY={"2rem"} textAlign={"center"} color={colors.focusedText} >Fitness App</Text>
-        <Link   paddingBottom={sectionSpacing} w={"100%"} href="/home" passHref>
+        <Link paddingBottom={sectionSpacing} w={"100%"} href="/home" passHref>
           <Text fontSize={18} as="a">Overview</Text>
         </Link>
-        <Link  paddingBottom={sectionSpacing} w={"100%"} href="/activity" passHref>
+        <Link paddingBottom={sectionSpacing} w={"100%"} href="/activity" passHref>
           <Text fontSize={18} as="a">Activities</Text>
         </Link>
-        <Link   paddingBottom={sectionSpacing} w={"100%"} href="/profile" passHref>
+        <Link paddingBottom={sectionSpacing} w={"100%"} href="/profile" passHref>
           <Text fontSize={18} as="a">Profile</Text>
         </Link>
-        <Link   paddingBottom={sectionSpacing} w={"100%"} href="/settings" passHref>
+        <Link paddingBottom={sectionSpacing} w={"100%"} href="/diets" passHref>
+          <Text fontSize={18} as="a">Diets</Text>
+        </Link>
+        <Link paddingBottom={sectionSpacing} w={"100%"} href="/settings" passHref>
           <Text fontSize={18} as="a" color={colors.focusedText}>Settings</Text>
         </Link>
-        <Box display={"flex"} flex={1}/>
+        <Box display={"flex"} flex={1} />
         <Button w={"100%"} mt={sectionSpacing} colorScheme='black' onClick={handleLogout} textColor={colors.unfocusedText}>Logout</Button>
         <Button w={"100%"} mt={sectionSpacing} colorScheme="red" onClick={() => setIsDeleteAlertOpen(true)} textColor={colors.focusedText}>Delete Account</Button>
       </Box>
 
       {/* Main Content */}
       <Box flex="1" p="4" backgroundColor={colors.pageBackground} display={"flex"} justifyContent={"center"} alignItems={"center"}>
-      {user  ?
-        <IoSettingsSharp color={colors.sidebarBackground} fontSize={400}/>
-        : 
-        <ActivityIndicatorView/>
-      }
-    </Box>
+        {user ?
+          <IoSettingsSharp color={colors.sidebarBackground} fontSize={400} />
+          :
+          <ActivityIndicatorView />
+        }
+      </Box>
 
-        {/* Delete Account Alert */}
-        <AlertDialog isOpen={isDeleteAlertOpen} onClose={handleCloseDeleteAlert}>
-          <AlertDialogOverlay backgroundColor={`${colors.pageBackground}50`}>
-            <AlertDialogContent backgroundColor={colors.sidebarBackground}>
-              <AlertDialogHeader fontSize="lg" fontWeight="bold" color={colors.focusedText}>
-                Delete Account
-              </AlertDialogHeader>
-              <AlertDialogBody color={colors.focusedText}>
-                Are you sure you want to delete your account? This action cannot be undone.
-              </AlertDialogBody>
-              <AlertDialogFooter>
-                <Button onClick={handleCloseDeleteAlert}>Cancel</Button>
-                <Button colorScheme="red" onClick={handleConfirmDelete} ml={3}>
-                  Delete
-                </Button>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialogOverlay>
-        </AlertDialog>
-        </Flex>
+      {/* Delete Account Alert */}
+      <AlertDialog isOpen={isDeleteAlertOpen} onClose={handleCloseDeleteAlert}>
+        <AlertDialogOverlay backgroundColor={`${colors.pageBackground}50`}>
+          <AlertDialogContent backgroundColor={colors.sidebarBackground}>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold" color={colors.focusedText}>
+              Delete Account
+            </AlertDialogHeader>
+            <AlertDialogBody color={colors.focusedText}>
+              Are you sure you want to delete your account? This action cannot be undone.
+            </AlertDialogBody>
+            <AlertDialogFooter>
+              <Button onClick={handleCloseDeleteAlert}>Cancel</Button>
+              <Button colorScheme="red" onClick={handleConfirmDelete} ml={3}>
+                Delete
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
+    </Flex>
   )
 }
 

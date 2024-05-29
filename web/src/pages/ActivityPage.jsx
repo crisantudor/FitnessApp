@@ -103,6 +103,9 @@ export const ActivityPage = () => {
         <Link paddingBottom={sectionSpacing} w={"100%"} href="/profile" passHref>
           <Text fontSize={18} as="a">Profile</Text>
         </Link>
+        <Link   paddingBottom={sectionSpacing} w={"100%"} href="/diets" passHref>
+          <Text fontSize={18} as="a">Diets</Text>
+        </Link>
         <Link paddingBottom={sectionSpacing} w={"100%"} href="/settings" passHref>
           <Text fontSize={18} as="a">Settings</Text>
         </Link>

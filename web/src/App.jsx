@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import { ProfilePage } from './pages/ProfilePage';
 import SettingsPage from './pages/SettingsPage';
 import { ActivityPage } from './pages/ActivityPage';
+import DietsPage from './pages/DietsPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/home" element={<HomePage/>} />
         <Route path="/profile" element={<ProfilePage/>} />
         <Route path="/activity" element={<ActivityPage/>} />
+        <Route path="/diets" element={<DietsPage/>} />
         <Route path="/settings" element={<SettingsPage/>} />
 
       </Routes>
