@@ -1,6 +1,6 @@
 .custom-scrollbar {
     overflow-x: auto;
-    max-width: calc(100vw - 300px);
+    max-width: 80vw;
     padding-right: 4vh;
     padding-top: 4vh;
 }

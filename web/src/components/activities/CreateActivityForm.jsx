@@ -23,7 +23,7 @@ export const CreateActivityForm = ({
     ];
 
     return (
-        <Box flex={1} borderRadius={dimensions.cardRoundness} backgroundColor={colors.cardBackground} fontSize={16} px={"6rem"}  py={"2rem"} >
+        <Box flex={1} borderRadius={dimensions.cardRoundness} backgroundColor={colors.cardBackground} fontSize={16} px={"6rem"} pt={"3rem"} pb={"5rem"} >
             <form onSubmit={handleSubmit}>
                 <Stack spacing={3}>
                     <FormControl id="activityType" isRequired>

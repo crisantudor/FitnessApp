@@ -108,7 +108,7 @@ export const ActivityPage = () => {
         </Link>
 
       </Box>
-      <Box display="flex" flexDirection={"column"} flex={1} backgroundColor={colors.pageBackground} p={"4"}>
+      <Box display="flex" flexDirection={"column"} flex={1} backgroundColor={colors.pageBackground} p={"4"} w={"80vw"}>
         <CreateActivityForm
           handleSubmit={handleSubmit}
           activityType={activityType}
