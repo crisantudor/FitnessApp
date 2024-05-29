@@ -4,6 +4,7 @@ const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const connectRoutes = require('./routes/connectRoutes');
 const activityRoutes = require('./routes/activityRoutes');
+const dietsRoutes = require('./routes/dietsRoutes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -16,6 +17,7 @@ app.use(express.json()); // For parsing application/json
 app.use('/users', userRoutes);
 app.use('/connect', connectRoutes);
 app.use('/activities', activityRoutes);
+app.use('/diets', dietsRoutes);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
