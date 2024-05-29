@@ -11,7 +11,15 @@ const daysAgo = (dateString) => {
     return `${differenceInDays} days ago`;
   };
 
+  function formatDate(isoDateString) {
+    const date = new Date(isoDateString);
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+}
+
+
 
   export {
-    daysAgo
+    daysAgo,
+    formatDate
   }

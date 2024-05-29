@@ -10,20 +10,20 @@ const Activity = {
     return rows[0];
   },
   getByUserId: async (userId) => {
-    const [rows] = await pool.query('SELECT * FROM Activities WHERE userId = ?', [userId]);
+    const [rows] = await pool.query('SELECT * FROM Activities WHERE user_id = ?', [userId]);
     return rows;
   },
   create: async (activity) => {
     const { userId, activityType, duration, caloriesBurned, activityDate } = activity;
-    await pool.query('INSERT INTO Activities (userId, activityType, duration, caloriesBurned, activityDate) VALUES (?, ?, ?, ?, ?)', 
+    await pool.query('INSERT INTO Activities (user_id, activity_type, duration, calories_burned, activity_date) VALUES (?, ?, ?, ?, ?)', 
       [userId, activityType, duration, caloriesBurned, activityDate]);
-    const [rows] = await pool.query('SELECT * FROM Activities WHERE userId = ? AND activityType = ? AND activityDate = ?', 
+    const [rows] = await pool.query('SELECT * FROM Activities WHERE user_id = ? AND activity_type = ? AND activity_date = ?', 
       [userId, activityType, activityDate]);
     return rows[0];
   },
   update: async (id, activity) => {
     const { activityType, duration, caloriesBurned, activityDate } = activity;
-    const [result] = await pool.query('UPDATE Activities SET activityType = ?, duration = ?, caloriesBurned = ?, activityDate = ? WHERE id = ?', 
+    const [result] = await pool.query('UPDATE Activities SET activity_type = ?, duration = ?, calories_burned = ?, activity_date = ? WHERE id = ?', 
       [activityType, duration, caloriesBurned, activityDate, id]);
     return result;
   },
