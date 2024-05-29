@@ -1,6 +1,5 @@
 const express = require('express');
 const connectController = require('../controllers/connectController');
-
 const router = express.Router();
 
 // New routes for login and register
